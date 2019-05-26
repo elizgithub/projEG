@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectgpaflutter/UI/addgrade.dart';
 import './gpashow.dart';
 class Mygpa extends StatefulWidget {
   @override
@@ -29,22 +30,22 @@ class Mygpastate extends State<Mygpa> {
           bottom: TabBar(
             tabs: <Widget>[
               Tab(
-                icon: Icon(Icons.grade),
+                icon: Icon(Icons.view_list),
                 text: 'Overall',
               ),
               Tab(
-                icon: Icon(Icons.list),
+                icon: Icon(Icons.add),
                 text: 'Add Grade',
-              ),
+              )
+
             ],
           ),
         ),
-        body: TabBarView(//THE BODY ON THE TAB
+        body: TabBarView(//THE BODY ON THE TAB childrens
           children: <Widget>[
          
             new Gpashow(),
-              
-            new Text("Second page")
+            new AddGrade(),
           ],
         ),
       ),
