@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 import  'dart:async';
-class AddGrade extends StatelessWidget{
+class AddGrade extends StatefulWidget{
   @override
-  Widget build(BuildContext context) {
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return AddGradeState();
+  }
+
+
+  }
+
+class AddGradeState extends State<AddGrade>{
+  var gradeItemSelected = "A+";
+
+    Widget build(BuildContext context) {
     // TODO: implement build
     return new Material(
       child: new Container(
@@ -22,31 +33,47 @@ class AddGrade extends StatelessWidget{
                   ),
                 ),
               ),
-          // Padding(
-          //   padding: EdgeInsets.only(top: 25,left: 25,right: 25),
-          //     child: SizedBox(
-          //       width: 200,
-          //       height: 200,
-          //       child: Container(
-          //         decoration: new BoxDecoration(
-          //           shape: BoxShape.rectangle,
-          //           border: new Border.all(
-          //             color: Colors.blue
-          //           )                    
-          //         ),
-          //       ),
-          //     ),
-          // ),
-
+       
           Padding(
             padding: EdgeInsets.only(top: 25,left: 25,right: 25),
              
-              child: NumberPicker.integer(
-                  initialValue: 2010,
-                  minValue: 2010,
-                  maxValue: 2030, 
-                  onChanged: (num value) {},
-            )
+             child: Row(children: <Widget>[
+               DropdownButton<String>(
+                items: [
+                DropdownMenuItem(
+                  value: "1",
+                  child: Text("A+"),
+                 ),
+                DropdownMenuItem(
+                value: "2",
+                child: Text("A"),
+                ),
+                DropdownMenuItem(
+                value: "3",
+                child: Text("A-"),
+                ),
+                DropdownMenuItem(
+                value: "4",
+                child: Text("B+"),
+                ),
+                DropdownMenuItem(
+                value: "5",
+                child: Text("B"),
+                
+                )                 
+               ], onChanged: (String value) {
+                 setState((){
+                    this.gradeItemSelected = value;
+                 });
+               },
+                value: gradeItemSelected,
+                isExpanded: true,
+               )
+
+
+             ],
+             ),
+              
           ),
 
           Padding(
@@ -82,5 +109,5 @@ class AddGrade extends StatelessWidget{
       
     );
   }
-
+  
 }
