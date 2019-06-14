@@ -28,6 +28,34 @@ class AddGradeState extends State<AddGrade> {
     "D-",
     "F"
   ];
+  void gradeAddDialog(){ 
+    showDialog(
+      context: context,
+      builder: (BuilderContext){
+          return  AlertDialog(
+          title: new Text ("Add Grade"),    
+          content:  
+           new Container(
+           child: Column(
+            children: <Widget>[
+              //  Padding(
+              //   padding: EdgeInsets.only(top: 25, left: 25, right: 25),
+               TextField(
+                
+                style: TextStyle(fontSize: 10),
+                decoration: InputDecoration(
+                  hintText: 'type course name',
+                  border: OutlineInputBorder(),
+                  labelText: 'Course',
+                  labelStyle: TextStyle(fontSize: 10)),
+            ),
+          // ),
+            ])                  
+      ));
+      }
+    
+    );
+  }
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Material(
@@ -67,26 +95,25 @@ class AddGradeState extends State<AddGrade> {
                   // isExpanded: true,                                                      
                 ),
 
-                DropdownButton<String>(items: [
-                  DropdownMenuItem(
-                    child: NumberPicker.integer(
-                      minValue: 2010,
-                      maxValue: 2030,
-                      initialValue: 2015,
-                      onChanged: (var value){
-                        setState(() {
-                          this.yearItemSelected = value;
-                        });
-                      },
-                    ),
-                )
-                ,])
+                NumberPicker.integer(
+                  minValue: 2010,
+                  maxValue: 2030,
+                  initialValue: yearItemSelected,
+                  listViewWidth: 100,
+                
+                  onChanged: (var x) =>
+                    setState(() {
+                     this.yearItemSelected = x; 
+                    })
+                  
+                ),
+
+
               ],
             ),
           ),
+          
           Padding(
-
-
               padding: EdgeInsets.only(top: 25, left: 25, right: 25),
               child: ButtonTheme(
                   height: 50,
@@ -106,10 +133,14 @@ class AddGradeState extends State<AddGrade> {
                     // splashColor: Colors.amber,
                     // elevation: 4,
                     // highlightElevation: 8,
-                    onPressed: () {},
+                    onPressed: () {
+                          gradeAdd();
+                    },
                   )))
         ],
       )),
+     
     );
+
   }
 }
