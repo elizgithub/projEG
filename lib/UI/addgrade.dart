@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:direct_select_flutter/direct_select_item.dart';
+import 'package:direct_select_flutter/direct_select_container.dart';
 import 'dart:async';
 
-class AddGrade extends StatefulWidget {
+class Addgrade extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -10,7 +12,7 @@ class AddGrade extends StatefulWidget {
   }
 }
 
-class AddGradeState extends State<AddGrade> {
+class AddGradeState extends State<Addgrade> {
   var gradeItemSelected = "A+";
   var yearItemSelected = 2015;
   var gradeList = [
@@ -79,35 +81,7 @@ class AddGradeState extends State<AddGrade> {
             padding: EdgeInsets.only(top: 25, left: 25, right: 25),
             child: Row(
               children: <Widget>[
-                DropdownButton<String>(
-                  items: gradeList.map((String dropdownGradeItem) {
-                    return DropdownMenuItem<String>(
-                      value: dropdownGradeItem,
-                      child: Text(dropdownGradeItem),
-                    );
-                  }).toList(),
-                  onChanged: (String value) {
-                    setState(() {
-                      this.gradeItemSelected = value;
-                    });
-                  },
-                  value: gradeItemSelected,
-                  // isExpanded: true,                                                      
-                ),
-
-                NumberPicker.integer(
-                  minValue: 2010,
-                  maxValue: 2030,
-                  initialValue: yearItemSelected,
-                  listViewWidth: 100,
-                
-                  onChanged: (var x) =>
-                    setState(() {
-                     this.yearItemSelected = x; 
-                    })
-                  
-                ),
-
+            
 
               ],
             ),
@@ -134,7 +108,7 @@ class AddGradeState extends State<AddGrade> {
                     // elevation: 4,
                     // highlightElevation: 8,
                     onPressed: () {
-                          gradeAdd();
+                          gradeAddDialog();
                     },
                   )))
         ],

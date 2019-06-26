@@ -45,7 +45,7 @@ class Mygpastate extends State<Mygpa> {
           children: <Widget>[
          
             new Gpashow(),
-            new AddGrade(),
+            new Addgrade(),
           ],
         ),
       ),
